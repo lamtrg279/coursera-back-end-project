@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 var session = require('express-session')
-var FileStore = require('session-file-store')
+var FileStore = require('session-file-store')(session)
 
 const Dishes = require('./models/dishes')
 
@@ -45,35 +45,23 @@ app.use(session({
     store: new FileStore()
 }))
 
-function auth(req, res, next) {
-    if (!req.signedCookies.user) {
-        var authHeader = req.headers.authorization
-        if (!authHeader) {
-            var err = new Error('You are no authencicated!')
-            res.setHeader('WWW-Authenciate', 'Basic')
-            err.status = 401
-            next(err)
-            return
-        }
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
-        var auth = new Buffer.from(authHeader.split(' ')[1], 'base64').toString().split(':')
-        var user = auth[0]
-        var pass = auth[1]
-        if (user == 'admin' && pass == 'password') {
-            next() //authorized
-        } else {
-            var err = new Error('You are not authenciated')
-            res.setHeader('WWW-Authenciate', 'Basic')
-            err.status = 401
-            next(err)
-        }
+function auth(req, res, next) {
+    console.log(req.session);
+
+    if (!req.session.user) {
+        var err = new Error('You are not authenticated!');
+        err.status = 403;
+        return next(err);
     } else {
-        if (req.signedCookies.user === 'admin') {
-            next()
+        if (req.session.user === 'authenticated') {
+            next();
         } else {
-            var err = new Error('You are not authenciated')
-            err.status = 401
-            next(err)
+            var err = new Error('You are not authenticated!');
+            err.status = 403;
+            return next(err);
         }
     }
 }
@@ -82,8 +70,6 @@ app.use(auth)
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/dishes', dishRouter);
 app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
