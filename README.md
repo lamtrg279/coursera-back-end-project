@@ -4,56 +4,56 @@
 
 #### Routes
 
-`Dishes`
+`Dishes`:
 
-/dishes
+  -/dishes
 
-/dishes/:dishId
+  -/dishes/:dishId
 
-/dishes/:dishId/comments
+  -/dishes/:dishId/comments
 
-/dishes/:dishId/comments/:commentsd
-
-
-`Promotions`
-
-/promo
-
-/promo/:promoId
+  -/dishes/:dishId/comments/:commentsd
 
 
-`leaders`
+`Promotions`:
 
-/leaders
+  -/promo
 
-/leaders/:leadersId
-
-
-`Users`
-- /users
-
-- /users/login
-
-- /users/logout
-
-- /users/signup
+  -/promo/:promoId
 
 
-`imageUpload`
+`leaders`: 
 
-/imageUpload
+  -/leaders
 
-
-`favorites`
-
--/favorites
-
--/favorites/:dishId
+  -/leaders/:leadersId
 
 
-`Facebook oAuth`
+`Users`:
+  -/users
 
--/index.html
+  -/users/login
+
+  -/users/logout
+
+  -/users/signup
+
+
+`imageUpload`: 
+
+  -/imageUpload
+
+
+`favorites`:
+
+  -/favorites
+
+  -/favorites/:dishId
+
+
+`Facebook oAuth`:
+
+  -/index.html
 
 --- This project also makes use of Facebook OAuth Authorization. In order to make it work please setup an App by going to https://developers.facebook.com/apps/ and register your app by following the instructions there and obtain your App ID and App Secret. Then Paste the App ID in public/index.html and both the ID and Secret in config.js.
 
