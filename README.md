@@ -6,13 +6,10 @@
 
 `Dishes`:
 
-  -/dishes
-
-  -/dishes/:dishId
-
-  -/dishes/:dishId/comments
-
-  -/dishes/:dishId/comments/:commentsd
+  - /dishes
+  - /dishes/:dishId
+  - /dishes/:dishId/comments
+  - /dishes/:dishId/comments/:commentsd
 
 
 `Promotions`:
