@@ -4,6 +4,5 @@ module.exports = {
     'facebook': {
         clientId: '1704926936373503',
         clientSecret: 'e5fd9559095cb3a4bd95da8bcb1be9a1'
-
     }
 }

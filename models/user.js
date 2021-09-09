@@ -12,8 +12,8 @@ var User = new Schema({
         default: ''
     },
     admin: {
-        type: Boolean,
-        default: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     },
     facebookId: String
 });
