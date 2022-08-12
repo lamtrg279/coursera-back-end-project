@@ -1,4 +1,4 @@
-t c# Coursera Back End Project
+# Coursera Back End Project
 
 **In this project I built a server side program that allows users to operate REST API. Users can also upload images into the database. I also set up the server to use HTTPS and configure the certificate and private key for use with HTTPS and use Express application to use cors, passport, jsonwebtoken, facebook-oauth to perform local authentication on users and admins**
 
